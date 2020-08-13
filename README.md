@@ -13,16 +13,35 @@ npm install --save nsc-permission-control
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import Permission from 'nsc-permission-control'
 
-import MyComponent from 'nsc-permission-control'
-import 'nsc-permission-control/dist/index.css'
+<Permission required="B001" granted="B001">
+  <button>permission B001 controlled button</button>
+</Permission>
+```
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
+`required` can be a string of permission code, or an array of permission code strings. So does `granted`.
+
+'*' is a special permission code, which allows to access all.
+
+You can define client side permission code, like:
+
+```js
+import Permission, { defPermission } from 'nsc-permission-control'
+defPermission('LOGIN', () => {
+  return window.isLogined
+})
+
+<Permission required="LOGIN">
+  <div>login protected content</div>
+</Permission>
+```
+
+You can use `hasPermission` alone:
+
+```js
+import { hasPermission } from 'nsc-permission-control'
+hasPermission(required, granted) // return true or false
 ```
 
 ## License
