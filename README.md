@@ -12,6 +12,8 @@ npm install --save nsc-permission-control
 
 ## Usage
 
+The permission controlled component will be rendered only when `granted` covers `required`:
+
 ```jsx
 import Permission from 'nsc-permission-control'
 
@@ -20,7 +22,17 @@ import Permission from 'nsc-permission-control'
 </Permission>
 ```
 
-`required` can be a string of permission code, or an array of permission code strings. So does `granted`.
+You can customize what to be rendered when not granted:
+
+```jsx
+import Permission from 'nsc-permission-control'
+
+<Permission required="B001" granted="B001" mode="advance">
+  {hasPermission => <button disabled={!hasPermission}>permission btn</button>}
+</Permission>
+```
+
+
 
 '*' is a special permission code, which allows to access all.
 
@@ -43,6 +55,19 @@ You can use `hasPermission` alone:
 import { hasPermission } from 'nsc-permission-control'
 hasPermission(required, granted) // return true or false
 ```
+
+## props
+
+ - required
+ - granted
+ - mode
+
+ `required` can be a string of permission code, or an array of permission code strings. So does `granted`.
+
+## utils
+ 
+  - hasPermission
+  - defPermission
 
 ## License
 

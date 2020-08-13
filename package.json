@@ -1,6 +1,6 @@
 {
   "name": "nsc-permission-control",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "permission controlled react component",
   "author": "nsc-open",
   "license": "MIT",
